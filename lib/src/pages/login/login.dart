@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/src/themes/light_color.dart';
+import 'package:routine_app/src/themes/light_color.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatefulWidget {

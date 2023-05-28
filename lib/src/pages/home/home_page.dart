@@ -1,11 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/src/model/data.dart';
-import 'package:flutter_ecommerce_app/src/themes/light_color.dart';
-import 'package:flutter_ecommerce_app/src/themes/theme.dart';
-import 'package:flutter_ecommerce_app/src/widgets/product_card.dart';
-import 'package:flutter_ecommerce_app/src/widgets/product_icon.dart';
-import 'package:flutter_ecommerce_app/src/widgets/extentions.dart';
+import 'package:routine_app/src/model/data.dart';
+import 'package:routine_app/src/pages/slide_bar/sidebar_menu.dart';
+import 'package:routine_app/src/themes/light_color.dart';
+import 'package:routine_app/src/themes/theme.dart';
+import 'package:routine_app/src/widgets/product_card.dart';
+import 'package:routine_app/src/widgets/product_icon.dart';
+import 'package:routine_app/src/widgets/extentions.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({
@@ -119,21 +120,69 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  Widget _appBar() {
+    return Container(
+      height: 150,
+      padding: AppTheme.padding,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          // InkWell(
+          //   onTap: () {
+          //     SlideBarMenuView();
+          //   },
+          //   child: RotatedBox(
+          //     quarterTurns: 4,
+          //     child: _icon(Icons.sort, color: Colors.black54),
+          //   ),
+          // ),
+          // ClipRRect(
+          //   borderRadius: BorderRadius.all(Radius.circular(13)),
+          //   child: Container(
+          //     decoration: BoxDecoration(
+          //       color: Theme.of(context).backgroundColor,
+          //       boxShadow: <BoxShadow>[
+          //         BoxShadow(
+          //             color: Color(0xfff8f8f8),
+          //             blurRadius: 10,
+          //             spreadRadius: 10),
+          //       ],
+          //     ),
+          //     child: Image.asset("assets/user.png"),
+          //   ),
+          // ).ripple(() {}, borderRadius: BorderRadius.all(Radius.circular(13)))
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height - 210,
-      child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        dragStartBehavior: DragStartBehavior.down,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            _search(),
-            _categoryWidget(),
-            _productWidget(),
-          ],
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        actions: [],
+        iconTheme: IconThemeData(color: Colors.black),
+      ),
+      drawer: SlideBarMenuView(),
+      body: Container(
+        height: MediaQuery.of(context).size.height - 210,
+        child: SingleChildScrollView(
+          physics: ClampingScrollPhysics(),
+          dragStartBehavior: DragStartBehavior.down,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              _appBar(),
+              _search(),
+              _categoryWidget(),
+              _productWidget(),
+            ],
+          ),
         ),
       ),
     );

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.routine.routineApp">
    <application
-        android:label="flutter_ecommerce_app"
+        android:label="routine_app"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

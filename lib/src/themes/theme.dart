@@ -33,7 +33,7 @@ class AppTheme {
   ];
 
   static EdgeInsets padding =
-      const EdgeInsets.symmetric(horizontal: 20, vertical: 10);
+      const EdgeInsets.only(left: 16, right: 16, bottom: 80);
   static EdgeInsets hPadding = const EdgeInsets.symmetric(
     horizontal: 10,
   );
